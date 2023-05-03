@@ -26,6 +26,7 @@ For a set of terminal window of **perf_main**:
 export PERF_NIC_LINK_BW=100000 PERF_NIC_MSG_RATE=12400  PERF_NIC_QPS_CAPA=9 PERF_MSEN_QP_LIMIT=1 PERF_MAX_SIM_BTENANT_NUM=1
 ```
 Next, you must carefully set the PeRF parameters for each tenant (in respective terminal window).
+
 On server node:
 ```
 export PERF_ENABLE=1 \
@@ -38,7 +39,9 @@ PERF_READ_PORT=2111 \
 PERF_IB_PORT=1 \
 TB_TARGET_RATE=0
 ```
+
 On client node:
+
 ```
 export PERF_ENABLE=1 \
 PERF_IS_SERVER=0 \
@@ -50,7 +53,8 @@ PERF_READ_PORT=2111 \
 PERF_IB_PORT=1 \
 TB_TARGET_RATE=0
 ```
- Make sure to fill in the correct values for the ```gid_idx``` and ```remote_ip``` fields. (```remote_ip``` is used for creating a channel for a READ QP)
+
+Make sure to fill in the correct values for the ```gid_idx``` and ```remote_ip``` fields. (```remote_ip``` is used for creating a channel for a READ QP.)
 
 ### Command Examples
 Here are some commands for executing [Perftest](https://github.com/linux-rdma/perftest) applications.
@@ -65,10 +69,12 @@ Note that the only difference in commands between server and client is that *cli
 You can run applications that use multiple QPs by simply increasing the value of  ```-q``` option. However, applications can utilize only a single thread to take turns on QPs to post WRs in this case. Hence, we added modified version of Perftest to support multi-threading.
 
 To start applications that support multi-threading, you need to build the modified Perftest as follows:
+
 ```
 cd perftest-4.5.0-multhrd
 ./build.sh
 ```
+
 After it is successfully built, use the following commands:
 * B_App<sub>multi</sub>: ```./ib_write_bw -F -q 5 -s 1048576 --run_infinitely --thrd_per_qp```
 * M_App<sub>multi</sub>: ```./ib_write_bw -F -q 10 -s 16 -l 32 --run_infinitely --thrd_per_qp``` 
@@ -77,13 +83,20 @@ After it is successfully built, use the following commands:
 Note that this version only supports ```--run_infinitely``` in *ib_write_bw*.
 
 ## Example Scenario
-Here we simulate B_App~single~ vs. D_App~single~ between Node A (10.0.101.2) and Node B (10.0.102.2). Node A writes to Node B in this example.
+Here we simulate B_App<sub>single</sub> vs. D_App<sub>single</sub> between Node A (10.0.101.2) and Node B (10.0.102.2). Node A writes to Node B in this example.
 
 1. Run **perf_main** on each node.
+
 	```./perf_main```
+	
 2. Run server applications (Node A):
+
 	```ib_write_bw -F -q 1 -s 1048576 --run_infinitely -p 9000``` for B_App<sub>single</sub>
+	
 	```ib_write_lat -F -s 16 -n 5000000 -p 9001``` for D_App<sub>single</sub>
+	
 3. Run client applications (Node B):
+
 	```ib_write_bw -F -q 1 -s 1048576 --run_infinitely -p 9000 10.0.102.2``` for B_App<sub>single</sub>
+	
 	```ib_write_lat -F -s 16 -n 5000000 -p 9001 10.0.102.2``` for D_App<sub>single</sub>
