@@ -87,16 +87,39 @@ Here we simulate B_App<sub>single</sub> vs. D_App<sub>single</sub> between Node 
 
 1. Run **perf_main** on each node.
 
-	```./perf_main```
+	In terminal #1 of Node A and B, respectively,
+	
+	```
+	./perf_main
+	```
 	
 2. Run server applications (Node A):
 
-	```ib_write_bw -F -q 1 -s 1048576 --run_infinitely -p 9000``` for B_App<sub>single</sub>
+	In terminal #2 of Node A,
+	```
+	# B_App
+	ib_write_bw -F -q 1 -s 1048576 --run_infinitely -p 9000
+	```
 	
-	```ib_write_lat -F -s 16 -n 5000000 -p 9001``` for D_App<sub>single</sub>
+	In terminal #3 of Node A,
+	
+	```
+	# D_App
+	ib_write_lat -F -s 16 -n 5000000 -p 9001
+	```
 	
 3. Run client applications (Node B):
 
-	```ib_write_bw -F -q 1 -s 1048576 --run_infinitely -p 9000 10.0.102.2``` for B_App<sub>single</sub>
+	In terminal #2 of Node B,
 	
-	```ib_write_lat -F -s 16 -n 5000000 -p 9001 10.0.102.2``` for D_App<sub>single</sub>
+	```
+	# B_App
+	ib_write_bw -F -q 1 -s 1048576 --run_infinitely -p 9000 10.0.102.2
+	```
+	
+	In terminal #3 of Node B,
+	
+	```
+	# D_App
+	ib_write_lat -F -s 16 -n 5000000 -p 9001 10.0.102.2
+	```
