@@ -54,7 +54,7 @@ PERF_IB_PORT=1 \
 TB_TARGET_RATE=0
 ```
 
-Make sure to fill in the correct values for the ```gid_idx``` and ```remote_ip``` fields. (```remote_ip``` is used for creating a channel for a READ QP.)
+Make sure to fill in the correct values for the ```gid_idx``` and ```remote_ip``` fields. (```remote_ip``` is used for creating a channel for RPC-based READ operations.)
 
 ### Command Examples
 Here are some commands for executing [Perftest](https://github.com/linux-rdma/perftest) applications.
