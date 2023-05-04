@@ -220,6 +220,7 @@ void* perf_thread(void *para)
     return NULL;
   
   signal(SIGKILL, perf_thread_end); // MUST be disabled when using CRAIL
+  signal(SIGINT, perf_thread_end);
 
   while(1)
   {
