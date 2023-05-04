@@ -219,7 +219,7 @@ void* perf_thread(void *para)
   if(!use_perf)
     return NULL;
   
-  //signal(SIGKILL, perf_thread_end);
+  signal(SIGKILL, perf_thread_end); // MUST be disabled when using CRAIL
 
   while(1)
   {
