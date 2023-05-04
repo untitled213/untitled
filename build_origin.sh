@@ -8,14 +8,6 @@ make && sudo make install
 cd $ROOT
 sleep 1
 
-cd $ROOT/perf_src/SOURCES_origin/libmlx4-41mlnx1
-./autogen.sh
-CFLAGS=-Wno-error ./configure --prefix=/usr/ --libdir=/usr/lib/ --sysconfdir=/etc/
-make clean
-make && sudo make install
-cd $ROOT
-sleep 1
-
 cd $ROOT/perf_src/SOURCES_origin/libmlx5-41mlnx1
 ./autogen.sh
 CFLAGS=-Wno-error ./configure --prefix=/usr/ --libdir=/usr/lib/ --sysconfdir=/etc/
