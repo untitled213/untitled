@@ -82,7 +82,7 @@ Here we simulate B_App<sub>single</sub> vs. D_App<sub>single</sub> between Node 
 	In terminal #2 of Node A,
 	```
 	# B_App
-	ib_write_bw -F -q 1 -s 1048576 --run_infinitely -p 9000
+	ib_write_bw -F -q 1 -s 1048576 --run_infinitely --report_gbits -p 9000
 	```
 	
 	In terminal #3 of Node A,
@@ -98,7 +98,7 @@ Here we simulate B_App<sub>single</sub> vs. D_App<sub>single</sub> between Node 
 	
 	```
 	# B_App
-	ib_write_bw -F -q 1 -s 1048576 --run_infinitely -p 9000 10.0.102.2
+	ib_write_bw -F -q 1 -s 1048576 --run_infinitely --report_gbits -p 9000 10.0.102.2
 	```
 	
 	In terminal #3 of Node B,
