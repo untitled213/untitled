@@ -29,29 +29,13 @@ Next, you must carefully set the PeRF parameters for each tenant (in respective 
 
 On server node:
 ```
-export PERF_ENABLE=1 \
-PERF_IS_SERVER=1 \
-PERF_GIDX={gid_idx} \
-PERF_REMOTE_IP={remote_ip} \
-PERF_CHUNK_SIZE=16384 \
-PERF_DUMMY_FACTOR=1024 \
-PERF_READ_PORT=2111 \
-PERF_IB_PORT=1 \
-TB_TARGET_RATE=0
+export PERF_ENABLE=1 PERF_IS_SERVER=1 PERF_GIDX={gid_idx} PERF_REMOTE_IP={remote_ip} PERF_CHUNK_SIZE=16384 PERF_DUMMY_FACTOR=1024 PERF_READ_PORT=2111 PERF_IB_PORT=1 TB_TARGET_RATE=0
 ```
 
 On client node:
 
 ```
-export PERF_ENABLE=1 \
-PERF_IS_SERVER=0 \
-PERF_GIDX={gid_idx} \
-PERF_REMOTE_IP={remote_ip} \
-PERF_CHUNK_SIZE=16384 \
-PERF_DUMMY_FACTOR=1024 \
-PERF_READ_PORT=2111 \
-PERF_IB_PORT=1 \
-TB_TARGET_RATE=0
+export PERF_ENABLE=1 PERF_IS_SERVER=0 PERF_GIDX={gid_idx} PERF_REMOTE_IP={remote_ip} PERF_CHUNK_SIZE=16384 PERF_DUMMY_FACTOR=1024 PERF_READ_PORT=2111 PERF_IB_PORT=1 TB_TARGET_RATE=0
 ```
 
 Make sure to fill in the correct values for the ```gid_idx``` and ```remote_ip``` fields. (```remote_ip``` is used for creating a channel for RPC-based READ operations.)
