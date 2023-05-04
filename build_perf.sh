@@ -28,4 +28,3 @@ CFLAGS=-Wno-error ./configure --prefix=/usr/ --libdir=/usr/lib/ --sysconfdir=/et
 make clean
 make && sudo make install
 cd $ROOT
-gcc perf_main.c -o perf_main -lpthread -lrt -lm
